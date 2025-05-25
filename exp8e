@@ -1,0 +1,71 @@
+EX NO 8(E):  HACKERRANK PROBLEM - PRINT PERMUTATION FOR GIVEN STRING
+
+AIM:
+To write a program to print all the permutations of a given string.
+
+
+
+ALGORITHM:
+1.Start.
+2.Define a function to swap characters in a string.
+3.Use recursion to generate all permutations.
+4.Print each permutation as it is generated.
+5.Read the string input from the user.
+6.Call the recursive function.
+7.End.
+
+PROGRAM:
+#include <stdio.h>
+#include <string.h>
+
+void swap(char *x, char *y) {
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+
+void permute(char *str, int l, int r) {
+    int i;
+    if (l == r)
+        printf("%s\n", str);
+    else {
+        for (i = l; i <= r; i++) {
+            swap((str + l), (str + i));
+            permute(str, l + 1, r);
+            swap((str + l), (str + i)); // backtrack
+        }
+    }
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    int n = strlen(str);
+    printf("Permutations of the string are:\n");
+    permute(str, 0, n - 1);
+    return 0;
+}
+
+C program to print the given string.
+
+
+Developed by:  Prem kumar K
+RegisterNumber:  212223060209
+
+INPUT:
+Enter a string: abc
+
+OUTPUT:
+abc  
+acb  
+bac  
+bca  
+cba  
+cab  
+
+
+RESULT:
+Thus, the program is executed and verified successfully
